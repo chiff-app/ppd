@@ -1,0 +1,13 @@
+{
+  "printWidth": 120,
+  "trailingComma": "none",
+  "singleQuote": true,
+  "tabWidth": 2,
+  "proseWrap": "never",
+  "overrides": [
+    {
+      "files": "v*/*",
+      "options": { "parser": "json" }
+    }
+  ]
+}

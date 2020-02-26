@@ -1,0 +1,11 @@
+{
+    "name": "ppd",
+    "version": "0.0.1",
+    "description": "PPD distribution service",
+    "scripts": {
+        "format": "prettier --write \"v*/*\""
+    },
+    "devDependencies": {
+        "prettier": "^1.19.1"
+    }
+}
