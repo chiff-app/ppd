@@ -1,0 +1,32 @@
+{
+  "ppds": [
+    {
+      "name": "Funda",
+      "characterSets": [
+        {
+          "name": "Letters",
+          "characters": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "Numbers",
+          "characters": "0123456789"
+        },
+        {
+          "name": "Specials",
+          "characters": ")(*&^%$#@!{}[]:;\"'?/,.<>`~|-_+="
+        },
+        {
+          "name": "Spaces",
+          "characters": " "
+        }
+      ],
+      "version": "1.0",
+      "properties": {
+        "expires": 0,
+        "minLength": 6
+      },
+      "url": "https://www.funda.nl",
+      "timestamp": 1534508632362
+    }
+  ]
+}

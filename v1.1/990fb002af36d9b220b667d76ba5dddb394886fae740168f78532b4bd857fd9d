@@ -1,0 +1,81 @@
+{
+  "ppds": [
+    {
+      "name": "Beautiful.ai",
+      "version": "1.1",
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "base": "LowerLetters"
+        },
+        {
+          "name": "UpperLetters",
+          "base": "UpperLetters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        },
+        {
+          "name": "Specials",
+          "base": "Specials"
+        },
+        {
+          "name": "Spaces",
+          "base": "Spaces"
+        }
+      ],
+      "url": "https://www.beautiful.ai",
+      "service": {
+        "login": {
+          "url": "https://www.beautiful.ai/login",
+          "routines": [
+            {
+              "type": "extendedJSLoginRoutine",
+              "instructions": [
+                {
+                  "type": "get",
+                  "url": "https://www.beautiful.ai/login",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "minOccurs": 1,
+                      "selector": "input#login-email"
+                    }
+                  ]
+                },
+                {
+                  "selector": "form#login-form",
+                  "type": "form",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "minOccurs": 1,
+                      "selector": "div[data-action='logout']"
+                    }
+                  ],
+                  "script": "document.querySelector('button#login-submit').click()",
+                  "element": [
+                    {
+                      "value": "{{username}}",
+                      "selector": "input#login-email"
+                    },
+                    {
+                      "value": "{{password}}",
+                      "selector": "input#login-password"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "properties": {
+        "expires": 0,
+        "maxLength": 32,
+        "minLength": 6
+      }
+    }
+  ]
+}

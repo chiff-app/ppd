@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Microsoft Live",
+      "redirect": "https://login.live.com",
+      "version": "1.1",
+      "url": "https://outlook.live.com",
+      "timestamp": 1568028432156
+    }
+  ]
+}

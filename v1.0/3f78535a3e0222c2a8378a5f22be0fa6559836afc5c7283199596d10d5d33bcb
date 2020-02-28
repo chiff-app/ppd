@@ -1,0 +1,36 @@
+{
+  "ppds": [
+    {
+      "name": "Netflix",
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "characters": "abcdefghijklmnopqrstuvwxyz"
+        },
+        {
+          "name": "UpperLetters",
+          "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "Numbers",
+          "characters": "1234567890"
+        },
+        {
+          "name": "Specials",
+          "characters": ")(*&^%$#@!{}[]:;\"'?/,.<>`~| -_+="
+        },
+        {
+          "name": "Spaces",
+          "characters": " "
+        }
+      ],
+      "version": "1.0",
+      "properties": {
+        "maxLength": 32,
+        "minLength": 8
+      },
+      "url": "https://www.netflix.com",
+      "timestamp": 1537438013525
+    }
+  ]
+}

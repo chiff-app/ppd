@@ -1,0 +1,52 @@
+{
+  "ppds": [
+    {
+      "name": "Apple",
+      "characterSets": [
+        {
+          "name": "UpperLetters",
+          "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "LowerLetters",
+          "characters": "abcdefghijklmnopqrstuvwxyz"
+        },
+        {
+          "name": "Numbers",
+          "characters": "0123456789"
+        },
+        {
+          "name": "Specials",
+          "characters": ")(*&^%$#@!{}[]:;''?/,.<>`~|-_+="
+        },
+        {
+          "name": "Spaces",
+          "characters": " "
+        }
+      ],
+      "version": "1.0",
+      "properties": {
+        "maxConsecutive": 2,
+        "minLength": 8,
+        "characterSettings": {
+          "characterSetSettings": [
+            {
+              "name": "UpperLetters",
+              "minOccurs": 1
+            },
+            {
+              "name": "LowerLetters",
+              "minOccurs": 1
+            },
+            {
+              "name": "Numbers",
+              "minOccurs": 1
+            }
+          ]
+        }
+      },
+      "url": "https://appleid.apple.com",
+      "timestamp": 1534773866371
+    }
+  ]
+}

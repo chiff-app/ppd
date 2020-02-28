@@ -1,0 +1,45 @@
+{
+  "ppds": [
+    {
+      "name": "Garmin Connect",
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "characters": "abcdefghijklmnopqrstuvwxyz"
+        },
+        {
+          "name": "UpperLetters",
+          "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "Numbers",
+          "characters": "1234567890"
+        }
+      ],
+      "version": "1.0",
+      "properties": {
+        "minLength": 8,
+        "characterSettings": {
+          "positionRestrictions": [],
+          "characterSetSettings": [
+            {
+              "name": "UpperLetters",
+              "minOccurs": 1
+            },
+            {
+              "name": "LowerLetters",
+              "minOccurs": 1
+            },
+            {
+              "name": "Numbers",
+              "minOccurs": 1
+            }
+          ],
+          "requirementGroups": []
+        }
+      },
+      "url": "https://connect.garmin.com",
+      "timestamp": 1535557598729
+    }
+  ]
+}

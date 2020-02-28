@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Coolblue",
+      "redirect": "https://www.coolblue.nl",
+      "version": "1.0",
+      "url": "https://coolblue.nl",
+      "timestamp": 1558342880349
+    }
+  ]
+}

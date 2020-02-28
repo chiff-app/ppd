@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "GitHub",
+      "redirect": "https://github.com",
+      "version": "1.0",
+      "url": "https://www.github.com",
+      "timestamp": 1558343223372
+    }
+  ]
+}

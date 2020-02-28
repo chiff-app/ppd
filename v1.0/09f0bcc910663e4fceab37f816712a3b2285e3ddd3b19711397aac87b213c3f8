@@ -1,0 +1,68 @@
+{
+  "ppds": [
+    {
+      "name": "Amazon",
+      "version": "1.0",
+      "characterSets": [],
+      "url": "https://www.amazon.com/",
+      "service": {
+        "login": {
+          "url": "https://www.amazon.com",
+          "routines": [
+            {
+              "type": "htmlLoginRoutine",
+              "instructions": [
+                {
+                  "type": "get",
+                  "url": "https://www.amazon.com/gp/navigation/redirector.html/ref=sign-in-redirect?ie=UTF8&associationHandle=usflex&currentPageURL=https%3A%2F%2Fwww.amazon.com%2F%3Fref_%3Dnav_custrec_signin&pageType=Gateway&switchAccount=&yshURL=https%3A%2F%2Fwww.amazon.com%2Fgp%2Fyourstore%2Fhome%3Fie%3DUTF8%26ref_%3Dnav_custrec_signin",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "minOccurs": 1,
+                      "selector": "#ap_email"
+                    }
+                  ]
+                },
+                {
+                  "selector": { "value": "form[name='signIn']" },
+                  "type": "form",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "selector": "#ap_password"
+                    }
+                  ],
+                  "element": [
+                    {
+                      "value": "{{username}}",
+                      "selector": { "value": "#ap_email" }
+                    }
+                  ]
+                },
+                {
+                  "selector": { "value": "form[name='signIn']" },
+                  "type": "form",
+                  "assert": [
+                    {
+                      "type": "cookie",
+                      "name": "forcefail"
+                    }
+                  ],
+                  "element": [
+                    {
+                      "value": "{{password}}",
+                      "selector": { "value": "#ap_password" }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "properties": {
+        "expires": 0
+      }
+    }
+  ]
+}

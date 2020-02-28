@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "TrainingPeaks",
+      "redirect": "https://www.trainingpeaks.com",
+      "version": "1.0",
+      "url": "https://app.trainingpeaks.com",
+      "timestamp": 1558343177384
+    }
+  ]
+}

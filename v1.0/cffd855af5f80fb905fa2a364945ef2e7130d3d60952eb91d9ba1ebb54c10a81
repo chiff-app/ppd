@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Spotify",
+      "redirect": "https://accounts.spotify.com",
+      "version": "1.0",
+      "url": "https://www.spotify.com",
+      "timestamp": 1558337833126
+    }
+  ]
+}

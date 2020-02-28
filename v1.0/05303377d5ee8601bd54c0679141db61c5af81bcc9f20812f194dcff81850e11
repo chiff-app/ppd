@@ -1,0 +1,29 @@
+{
+  "ppds": [
+    {
+      "name": "Paypal",
+      "characterSets": [
+        {
+          "name": "Letters",
+          "characters": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "Numbers",
+          "characters": "0123456789"
+        },
+        {
+          "name": "Specials",
+          "characters": "~!@#$%^&*()_+=?><.,/)"
+        }
+      ],
+      "version": "1.0",
+      "properties": {
+        "expires": 0,
+        "maxLength": 20,
+        "minLength": 8
+      },
+      "url": "https://www.paypal.com",
+      "timestamp": 1534510062542
+    }
+  ]
+}

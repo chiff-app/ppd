@@ -1,0 +1,57 @@
+{
+  "ppds": [
+    {
+      "name": "Watchuseek",
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "characters": "abcdefghijklmnopqrstuvwxyz"
+        },
+        {
+          "name": "UpperLetters",
+          "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "Numbers",
+          "characters": "1234567890"
+        },
+        {
+          "name": "Specials",
+          "characters": ")(*&^%$#@!{}[]:;\"'?/,.<>`~|-_+="
+        },
+        {
+          "name": "Spaces",
+          "characters": " "
+        }
+      ],
+      "version": "1.0",
+      "properties": {
+        "expires": 0,
+        "maxLength": 32,
+        "minLength": 10,
+        "characterSettings": {
+          "characterSetSettings": [
+            {
+              "name": "LowerLetters",
+              "minOccurs": 1
+            },
+            {
+              "name": "UpperLetters",
+              "minOccurs": 1
+            },
+            {
+              "name": "Numbers",
+              "minOccurs": 1
+            },
+            {
+              "name": "Specials",
+              "minOccurs": 1
+            }
+          ]
+        }
+      },
+      "url": "https://forums.watchuseek.com",
+      "timestamp": 1537430685945
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Airbnb",
+      "redirect": "https://www.airbnb.com",
+      "version": "1.0",
+      "url": "https://www.airbnb.nl",
+      "timestamp": 1558343763568
+    }
+  ]
+}

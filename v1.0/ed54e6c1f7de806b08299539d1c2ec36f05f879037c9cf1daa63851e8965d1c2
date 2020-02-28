@@ -1,0 +1,49 @@
+{
+  "ppds": [
+    {
+      "name": "Knab",
+      "characterSets": [
+        {
+          "name": "UpperLetters",
+          "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "LowerLetters",
+          "characters": "abcdefghijklmnopqrstuvwxyz"
+        },
+        {
+          "name": "Numbers",
+          "characters": "0123456789"
+        },
+        {
+          "name": "Specials",
+          "characters": "-_.@!$*+/=?)"
+        }
+      ],
+      "version": "1.0",
+      "properties": {
+        "expires": 0,
+        "maxLength": 32,
+        "minLength": 10,
+        "characterSettings": {
+          "characterSetSettings": [
+            {
+              "name": "LowerLetters",
+              "minOccurs": 1
+            },
+            {
+              "name": "Numbers",
+              "minOccurs": 1
+            },
+            {
+              "name": "UpperLetters",
+              "minOccurs": 1
+            }
+          ]
+        }
+      },
+      "url": "https://www.knab.nl",
+      "timestamp": 1536827335153
+    }
+  ]
+}

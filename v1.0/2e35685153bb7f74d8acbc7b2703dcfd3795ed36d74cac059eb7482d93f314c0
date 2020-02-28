@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Amsterdam",
+      "redirect": "https://amsterdam.nl",
+      "version": "1.0",
+      "url": "https://iamprdsp1.amsterdam.nl",
+      "timestamp": 1568027328680
+    }
+  ]
+}

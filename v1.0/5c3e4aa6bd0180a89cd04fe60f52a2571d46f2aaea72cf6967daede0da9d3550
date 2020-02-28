@@ -1,0 +1,59 @@
+{
+  "ppds": [
+    {
+      "name": "Amsterdam",
+      "version": "1.0",
+      "characterSets": [],
+      "url": "https://amsterdam.nl",
+      "service": {
+        "login": {
+          "url": "https://awm.amsterdam.nl",
+          "maxTries": 3,
+          "routines": [
+            {
+              "type": "htmlLoginRoutine",
+              "instructions": [
+                {
+                  "type": "get",
+                  "url": "https://awm.amsterdam.nl",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "minOccurs": 1,
+                      "selector": "#IDPLogin"
+                    }
+                  ]
+                },
+                {
+                  "selector": { "value": "#IDPLogin" },
+                  "type": "form",
+                  "assert": [
+                    {
+                      "type": "cookie",
+                      "name": "forcefail"
+                    }
+                  ],
+                  "element": [
+                    {
+                      "value": "{{username}}",
+                      "selector": { "value": "#Ecom_User_ID" }
+                    },
+                    {
+                      "value": "{{password}}",
+                      "selector": { "value": "#Ecom_Password" }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "properties": {
+        "expires": 0,
+        "maxLength": 22,
+        "minLength": 8
+      }
+    }
+  ]
+}

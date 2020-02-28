@@ -1,0 +1,52 @@
+{
+  "ppds": [
+    {
+      "name": "Airbnb",
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "base": "LowerLetters"
+        },
+        {
+          "name": "UpperLetters",
+          "base": "UpperLetters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        },
+        {
+          "name": "Specials",
+          "characters": "!\"#$%&'()*,./:;<>?@[]^`{|}~"
+        },
+        {
+          "name": "Spaces",
+          "base": "Spaces"
+        }
+      ],
+      "version": "1.1",
+      "properties": {
+        "minLength": 8,
+        "characterSettings": {
+          "requirementGroups": [
+            {
+              "minRules": 1,
+              "requirementRules": [
+                {
+                  "minOccurs": 1,
+                  "characterSet": "Specials"
+                },
+                {
+                  "minOccurs": 1,
+                  "characterSet": "Numbers"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "url": "https://www.airbnb.com",
+      "timestamp": 1535549010978
+    }
+  ]
+}

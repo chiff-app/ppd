@@ -4,14 +4,14 @@
       "characterSets": [
         {
           "name": "Letters",
-          "base": "Letters"
+          "characters": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         },
-        { "name": "Numbers", "base": "Numbers" },
+        { "name": "Numbers", "characters": "0123456789" },
         {
           "name": "Specials",
-          "base": "Specials"
+          "characters": ")(*&^%$#@!{}[]:;\"'?/,.<>`~|-_+="
         },
-        { "name": "Spaces", "base": "Spaces" }
+        { "name": "Spaces", "characters": " " }
       ],
       "service": {
         "passwordReset": {
@@ -35,7 +35,7 @@
                   "url": "https://www.bol.com/nl/rnwy/account/changepassword"
                 },
                 {
-                  "selector": "#ChangePasswordForm",
+                  "selector": { "value": "#ChangePasswordForm" },
                   "type": "form",
                   "assert": [
                     {
@@ -46,9 +46,12 @@
                   "element": [
                     {
                       "value": "{{password}}",
-                      "selector": "#account_oldpassword"
+                      "selector": { "value": "#account_oldpassword" }
                     },
-                    { "value": "{{newPassword}}", "selector": "#new_password" }
+                    {
+                      "value": "{{newPassword}}",
+                      "selector": { "value": "#new_password" }
+                    }
                   ]
                 }
               ]
@@ -72,13 +75,19 @@
                   "url": "https://www.bol.com/nl/account/login.html"
                 },
                 {
-                  "selector": "#existinguser",
+                  "selector": { "value": "#existinguser" },
                   "type": "form",
                   "click": "input[name=submit]",
                   "assert": [{ "type": "cookie", "name": "BUSINESSPARTNERNO" }],
                   "element": [
-                    { "value": "{{username}}", "selector": "#login_email" },
-                    { "value": "{{password}}", "selector": "#login_password" }
+                    {
+                      "value": "{{username}}",
+                      "selector": { "value": "#login_email" }
+                    },
+                    {
+                      "value": "{{password}}",
+                      "selector": { "value": "#login_password" }
+                    }
                   ]
                 }
               ]
@@ -88,7 +97,7 @@
         "register": { "url": "https://www.bol.com/nl/rnwy/account/newuser" }
       },
       "name": "BOL.com",
-      "version": "1.1",
+      "version": "1.0",
       "properties": { "maxLength": 32, "minLength": 6 },
       "url": "https://www.bol.com",
       "timestamp": 1534864189846

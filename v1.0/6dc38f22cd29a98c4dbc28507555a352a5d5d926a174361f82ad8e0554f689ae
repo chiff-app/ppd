@@ -1,0 +1,37 @@
+{
+  "ppds": [
+    {
+      "name": "Mantel",
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "characters": "abcdefghijklmnopqrstuvwxyz"
+        },
+        {
+          "name": "UpperLetters",
+          "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "Numbers",
+          "characters": "1234567890"
+        },
+        {
+          "name": "Specials",
+          "characters": ")(*&^%$#@!{}[]:;\"'?/,.<>`~|-_+="
+        },
+        {
+          "name": "Spaces",
+          "characters": " "
+        }
+      ],
+      "version": "1.0",
+      "properties": {
+        "expires": 0,
+        "maxLength": 32,
+        "minLength": 6
+      },
+      "url": "https://www.mantel.com",
+      "timestamp": 1537773454960
+    }
+  ]
+}

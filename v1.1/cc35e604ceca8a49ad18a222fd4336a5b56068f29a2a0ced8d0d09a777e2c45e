@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "BOL.com",
+      "redirect": "https://www.bol.com",
+      "version": "1.1",
+      "url": "https://bol.com",
+      "timestamp": 1569505845435
+    }
+  ]
+}

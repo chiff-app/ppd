@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Coursera",
+      "redirect": "https://www.coursera.org",
+      "version": "1.0",
+      "url": "https://www.coursera.com",
+      "timestamp": 1558343268041
+    }
+  ]
+}

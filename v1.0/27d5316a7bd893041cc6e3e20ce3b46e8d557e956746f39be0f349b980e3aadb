@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Google",
+      "redirect": "https://accounts.google.com",
+      "version": "1.0",
+      "url": "https://drive.google.com",
+      "timestamp": 1569253692979
+    }
+  ]
+}

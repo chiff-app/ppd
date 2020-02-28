@@ -1,0 +1,51 @@
+{
+  "ppds": [
+    {
+      "name": "DigiD",
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "characters": "abcdefghijklmnopqrstuvwxyz"
+        },
+        {
+          "name": "UpperLetters",
+          "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "Numbers",
+          "characters": "0123456789"
+        },
+        {
+          "name": "Specials",
+          "characters": ")(*&^%$#@!{}[]:;\"'?/,.<>`~|-_+="
+        }
+      ],
+      "version": "1.0",
+      "properties": {
+        "expires": 0,
+        "maxLength": 32,
+        "minLength": 8,
+        "characterSetSettings": [
+          {
+            "name": "LowerLetters",
+            "minOccurs": 1
+          },
+          {
+            "name": "UpperLetters",
+            "minOccurs": 1
+          },
+          {
+            "name": "Numbers",
+            "minOccurs": 1
+          },
+          {
+            "name": "Specials",
+            "minOccurs": 1
+          }
+        ]
+      },
+      "url": "https://www.digid.nl",
+      "timestamp": 1536063797388
+    }
+  ]
+}

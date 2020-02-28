@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Apple",
+      "redirect": "https://appleid.apple.com",
+      "version": "1.1",
+      "url": "https://www.apple.com",
+      "timestamp": 1558343643471
+    }
+  ]
+}

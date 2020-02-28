@@ -1,0 +1,50 @@
+{
+  "ppds": [
+    {
+      "name": "Ziggo Mail",
+      "version": "1.1",
+
+      "url": "https://mail.ziggo.nl",
+      "service": {
+        "login": {
+          "url": "https://mail.ziggo.nl",
+          "routines": [
+            {
+              "type": "extendedJSLoginRoutine",
+              "instructions": [
+                {
+                  "type": "get",
+                  "url": "https://mail.ziggo.nl/",
+                  "assert": [
+                    {
+                      "type": "url",
+                      "prefix": "https://mail.ziggo.nl/appsuite/"
+                    }
+                  ]
+                },
+                {
+                  "selector": "#io-ox-login-form",
+                  "type": "form",
+                  "click": "#io-ox-login-button",
+                  "element": [
+                    {
+                      "value": "{{username}}",
+                      "selector": "#io-ox-login-username"
+                    },
+                    {
+                      "value": "{{password}}",
+                      "selector": "#io-ox-login-password"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "properties": {
+        "expires": 0
+      }
+    }
+  ]
+}

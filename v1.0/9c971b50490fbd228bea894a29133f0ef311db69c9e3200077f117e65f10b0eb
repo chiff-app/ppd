@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Gatehub",
+      "redirect": "https://gatehub.net",
+      "version": "1.0",
+      "url": "https://wallet.gatehub.net",
+      "timestamp": 1558343572304
+    }
+  ]
+}

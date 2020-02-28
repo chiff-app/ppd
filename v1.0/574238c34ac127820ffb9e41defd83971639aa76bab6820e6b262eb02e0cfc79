@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "DigiD",
+      "redirect": "https://www.digid.nl",
+      "version": "1.0",
+      "url": "https://digid.nl",
+      "timestamp": 1558343192600
+    }
+  ]
+}

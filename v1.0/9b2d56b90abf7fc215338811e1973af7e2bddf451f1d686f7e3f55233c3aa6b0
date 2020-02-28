@@ -1,0 +1,53 @@
+{
+  "ppds": [
+    {
+      "name": "Coolblue",
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "characters": "abcdefghijklmnopqrstuvwxyz"
+        },
+        {
+          "name": "UpperLetters",
+          "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "Numbers",
+          "characters": "1234567890"
+        },
+        {
+          "name": "Specials",
+          "characters": ")(*&^%$#@!{}[]:;\"'?/,.<>`~|-_+="
+        },
+        {
+          "name": "Spaces",
+          "characters": " "
+        }
+      ],
+      "version": "1.0",
+      "properties": {
+        "minLength": 6,
+        "characterSettings": {
+          "characterSetSettings": [],
+          "requirementGroups": [
+            {
+              "minRules": 1,
+              "requirementRules": [
+                {
+                  "minOccurs": 1,
+                  "characterSet": "Specials"
+                },
+                {
+                  "minOccurs": 1,
+                  "characterSet": "Numbers"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "url": "https://www.coolblue.nl",
+      "timestamp": 1534509669232
+    }
+  ]
+}

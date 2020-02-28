@@ -1,0 +1,29 @@
+{
+  "ppds": [
+    {
+      "name": "Imageshack",
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "base": "LowerLetters"
+        },
+        {
+          "name": "UpperLetters",
+          "base": "UpperLetters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        }
+      ],
+      "version": "1.1",
+      "properties": {
+        "expires": 0,
+        "maxLength": 32,
+        "minLength": 6
+      },
+      "url": "https://imageshack.com",
+      "timestamp": 1537430587827
+    }
+  ]
+}

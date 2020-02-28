@@ -1,0 +1,49 @@
+{
+  "ppds": [
+    {
+      "name": "Nike",
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "base": "LowerLetters"
+        },
+        {
+          "name": "UpperLetters",
+          "base": "UpperLetters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        },
+        {
+          "name": "Specials",
+          "base": "Specials"
+        }
+      ],
+      "version": "1.1",
+      "properties": {
+        "expires": 0,
+        "maxLength": 25,
+        "minLength": 8,
+        "characterSettings": {
+          "characterSetSettings": [
+            {
+              "name": "LowerLetters",
+              "minOccurs": 1
+            },
+            {
+              "name": "UpperLetters",
+              "minOccurs": 1
+            },
+            {
+              "name": "Numbers",
+              "minOccurs": 1
+            }
+          ]
+        }
+      },
+      "url": "https://www.nike.com",
+      "timestamp": 1538397749633
+    }
+  ]
+}

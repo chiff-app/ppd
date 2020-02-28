@@ -1,0 +1,32 @@
+{
+  "ppds": [
+    {
+      "name": "Marktplaats",
+      "characterSets": [
+        {
+          "name": "Letters",
+          "characters": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "Numbers",
+          "characters": "0123456789"
+        },
+        {
+          "name": "Specials",
+          "characters": ")(*&^%$#@!{}[]:;\"'?/,.<>`~|-_+="
+        },
+        {
+          "name": "Spaces",
+          "characters": " "
+        }
+      ],
+      "version": "1.0",
+      "properties": {
+        "maxLength": 32,
+        "minLength": 8
+      },
+      "url": "https://www.marktplaats.nl",
+      "timestamp": 1534509388704
+    }
+  ]
+}

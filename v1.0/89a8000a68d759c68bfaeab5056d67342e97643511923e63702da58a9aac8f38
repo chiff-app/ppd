@@ -1,0 +1,158 @@
+{
+  "ppds": [
+    {
+      "characterSets": [
+        {
+          "name": "Letters",
+          "characters": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "Numbers",
+          "characters": "0123456789"
+        },
+        {
+          "name": "Specials",
+          "characters": ")(*&^%$#@!{}[]:;\"'?/,.<>`~|-+="
+        },
+        {
+          "name": "Spaces",
+          "characters": " "
+        }
+      ],
+      "service": {
+        "passwordReset": {
+          "url": "https://www.facebook.com/login/identify"
+        },
+        "passwordChange": {
+          "url": "https://myaccount.google.com/signinoptions/password",
+          "routines": [
+            {
+              "type": "extendedJSPasswordChangeRoutine",
+              "login": "htmlLoginRoutine",
+              "instructions": [
+                {
+                  "type": "get",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "minOccurs": 1,
+                      "selector": "input[name=password]"
+                    }
+                  ],
+                  "url": "https://myaccount.google.com/general-light/password"
+                },
+                {
+                  "selector": { "value": "form" },
+                  "type": "form",
+                  "click": "#passwordNext",
+                  "script": "document.querySelector('#passwordNext').click()",
+                  "assert": [],
+                  "element": [
+                    {
+                      "value": "{{password}}",
+                      "selector": { "value": "input[name=password]" }
+                    }
+                  ]
+                },
+                {
+                  "selector": { "value": "form" },
+                  "type": "form",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "selector": "form div[role=alert]",
+                      "maxOccurs": 0
+                    }
+                  ],
+                  "script": "document.querySelector('form').submit()",
+                  "element": [
+                    {
+                      "value": "{{newPassword}}",
+                      "selector": {
+                        "value": "input[name='id.boq.ubcp.password']"
+                      }
+                    },
+                    {
+                      "value": "{{newPassword}}",
+                      "selector": {
+                        "value": "input[name='id.boq.ubcp.repeatedPassword']"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "login": {
+          "url": "https://accounts.google.com",
+          "routines": [
+            {
+              "type": "extendedJSLoginRoutine",
+              "instructions": [
+                {
+                  "type": "get",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "minOccurs": 1,
+                      "selector": "#Email"
+                    }
+                  ],
+                  "url": "https://accounts.google.com/ServiceLogin?rip=1&nojavascript=1#identifier"
+                },
+                {
+                  "selector": { "value": "#gaia_loginform" },
+                  "type": "form",
+                  "click": "#gaia_loginform input#next",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "minOccurs": 1,
+                      "selector": "#Passwd"
+                    }
+                  ],
+                  "script": "document.querySelector('#gaia_loginform input#next').click()",
+                  "element": [
+                    {
+                      "value": "{{username}}",
+                      "selector": { "value": "input#Email" }
+                    }
+                  ]
+                },
+                {
+                  "selector": { "value": "#gaia_loginform" },
+                  "type": "form",
+                  "click": "#gaia_loginform input#signIn",
+                  "assert": [
+                    {
+                      "type": "cookie",
+                      "name": "SSID"
+                    }
+                  ],
+                  "script": "document.querySelector('#gaia_loginform input#signIn').click()",
+                  "element": [
+                    {
+                      "value": "{{password}}",
+                      "selector": { "value": "input#Passwd" }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "register": {
+          "url": "https://accounts.google.com/SignUp"
+        }
+      },
+      "name": "Google",
+      "version": "1.0",
+      "properties": {
+        "minLength": 8
+      },
+      "url": "https://accounts.google.com",
+      "timestamp": 1536766688495
+    }
+  ]
+}

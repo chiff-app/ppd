@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Zwift",
+      "redirect": "https://www.zwift.com",
+      "version": "1.0",
+      "url": "https://zwift.com",
+      "timestamp": 1558342779025
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Nike",
+      "redirect": "https://www.nike.com",
+      "version": "1.1",
+      "url": "https://store.nike.com",
+      "timestamp": 1558339465902
+    }
+  ]
+}

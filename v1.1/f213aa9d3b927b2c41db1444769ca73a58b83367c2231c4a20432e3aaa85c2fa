@@ -1,0 +1,32 @@
+{
+  "ppds": [
+    {
+      "name": "Coursera",
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "base": "LowerLetters"
+        },
+        {
+          "name": "UpperLetters",
+          "base": "UpperLetters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        },
+        {
+          "name": "Specials",
+          "base": "Specials"
+        }
+      ],
+      "version": "1.1",
+      "properties": {
+        "expires": 0,
+        "minLength": 8
+      },
+      "url": "https://www.coursera.org",
+      "timestamp": 1535556738486
+    }
+  ]
+}

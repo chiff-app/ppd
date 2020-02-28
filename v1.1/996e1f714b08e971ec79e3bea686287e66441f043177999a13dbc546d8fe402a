@@ -1,0 +1,32 @@
+{
+  "ppds": [
+    {
+      "name": "GitHub",
+      "characterSets": [
+        {
+          "name": "Letters",
+          "base": "Letters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        },
+        {
+          "name": "Specials",
+          "base": "Specials"
+        },
+        {
+          "name": "Spaces",
+          "base": "Spaces"
+        }
+      ],
+      "version": "1.1",
+      "properties": {
+        "expires": 0,
+        "minLength": 7
+      },
+      "url": "https://github.com",
+      "timestamp": 1534508918998
+    }
+  ]
+}

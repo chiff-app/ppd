@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Deliveroo",
+      "redirect": "https://deliveroo.nl",
+      "version": "1.1",
+      "url": "https://deliveroo.co.uk",
+      "timestamp": 1558343027178
+    }
+  ]
+}

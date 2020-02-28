@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "ING",
+      "redirect": "https://www.ing.nl",
+      "version": "1.1",
+      "url": "https://mijn.ing.nl",
+      "timestamp": 1558343597371
+    }
+  ]
+}

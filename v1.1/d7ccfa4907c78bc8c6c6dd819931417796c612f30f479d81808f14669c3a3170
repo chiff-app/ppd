@@ -1,0 +1,36 @@
+{
+  "ppds": [
+    {
+      "name": "Udemy",
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "base": "LowerLetters"
+        },
+        {
+          "name": "UpperLetters",
+          "base": "UpperLetters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        },
+        {
+          "name": "Specials",
+          "base": "Specials"
+        },
+        {
+          "name": "Spaces",
+          "base": "Spaces"
+        }
+      ],
+      "version": "1.1",
+      "properties": {
+        "maxLength": 32,
+        "minLength": 6
+      },
+      "url": "https://www.udemy.com",
+      "timestamp": 1537430557013
+    }
+  ]
+}

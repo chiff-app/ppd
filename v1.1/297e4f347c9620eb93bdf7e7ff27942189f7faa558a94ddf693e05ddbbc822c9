@@ -1,0 +1,45 @@
+{
+  "ppds": [
+    {
+      "name": "Wiggle",
+      "characterSets": [
+        {
+          "name": "Letters",
+          "base": "Letters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        },
+        {
+          "name": "Specials",
+          "base": "Specials"
+        },
+        {
+          "name": "Spaces",
+          "base": "Spaces"
+        }
+      ],
+      "version": "1.1",
+      "properties": {
+        "expires": 0,
+        "maxLength": 32,
+        "minLength": 6,
+        "characterSettings": {
+          "characterSetSettings": [
+            {
+              "name": "Letters",
+              "minOccurs": 1
+            },
+            {
+              "name": "Numbers",
+              "minOccurs": 1
+            }
+          ]
+        }
+      },
+      "url": "https://www.wiggle.com",
+      "timestamp": 1537530989152
+    }
+  ]
+}

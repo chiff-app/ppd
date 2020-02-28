@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Garmin Connect",
+      "redirect": "https://connect.garmin.com",
+      "version": "1.0",
+      "url": "http://www.garmin.com",
+      "timestamp": 1558338500170
+    }
+  ]
+}

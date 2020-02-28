@@ -1,0 +1,102 @@
+{
+  "ppds": [
+    {
+      "name": "Exact",
+      "version": "1.0",
+      "characterSets": [
+        {
+          "name": "Numbers",
+          "characters": "0123456789"
+        },
+        {
+          "name": "Specials",
+          "characters": ")(*&^%$#@!{}[]:;\"'?/,.<>`~|-_+="
+        },
+        {
+          "name": "UpperLetters",
+          "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "LowerLetters",
+          "characters": "abcdefghijklmnopqrstuvwxyz"
+        }
+      ],
+      "url": "https://start.exactonline.nl",
+      "service": {
+        "login": {
+          "url": "https://start.exactonline.nl/",
+          "routines": [
+            {
+              "type": "extendedJSLoginRoutine",
+              "instructions": [
+                {
+                  "type": "get",
+                  "url": "https://start.exactonline.nl/",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "minOccurs": 1,
+                      "selector": "#login"
+                    }
+                  ]
+                },
+                {
+                  "selector": { "value": "#login" },
+                  "type": "form",
+                  "click": "#LoginForm_btnSave",
+                  "assert": [
+                    {
+                      "type": "cookie",
+                      "name": "UNUSED"
+                    }
+                  ],
+                  "element": [
+                    {
+                      "value": "{{username}}",
+                      "selector": { "value": "#LoginForm_UserName" }
+                    },
+                    {
+                      "value": "{{password}}",
+                      "selector": { "value": "#LoginForm_Password" }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "properties": {
+        "expires": 0,
+        "minLength": 10,
+        "characterSettings": {
+          "characterSetSettings": [
+            {
+              "name": "Numbers",
+              "minOccurs": 1
+            },
+            {
+              "name": "LowerLetters",
+              "minOccurs": 1
+            }
+          ],
+          "requirementGroups": [
+            {
+              "minRules": 1,
+              "requirementRules": [
+                {
+                  "minOccurs": 1,
+                  "characterSet": "Numbers"
+                },
+                {
+                  "minOccurs": 1,
+                  "characterSet": "Specials"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

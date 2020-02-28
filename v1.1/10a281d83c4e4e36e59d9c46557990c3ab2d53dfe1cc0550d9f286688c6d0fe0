@@ -1,0 +1,50 @@
+{
+  "ppds": [
+    {
+      "name": "Headfirst",
+      "version": "1.1",
+      "url": "https://select.headfirst.nl",
+      "service": {
+        "login": {
+          "url": "https://select.headfirst.nl/nl/nl/login",
+          "routines": [
+            {
+              "type": "extendedJSLoginRoutine",
+              "instructions": [
+                {
+                  "type": "get",
+                  "url": "https://select.headfirst.nl/nl/nl/login",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "minOccurs": 1,
+                      "selector": "#login_email"
+                    }
+                  ]
+                },
+                {
+                  "selector": "#login_email",
+                  "type": "form",
+                  "click": "div.login-button > button",
+                  "element": [
+                    {
+                      "value": "{{username}}",
+                      "selector": "#login_email"
+                    },
+                    {
+                      "value": "{{password}}",
+                      "selector": "#login_password"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "properties": {
+        "expires": 0
+      }
+    }
+  ]
+}

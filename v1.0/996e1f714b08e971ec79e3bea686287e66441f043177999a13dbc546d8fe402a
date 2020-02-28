@@ -1,0 +1,32 @@
+{
+  "ppds": [
+    {
+      "name": "GitHub",
+      "characterSets": [
+        {
+          "name": "Letters",
+          "characters": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "Numbers",
+          "characters": "0123456789"
+        },
+        {
+          "name": "Specials",
+          "characters": ")(*&^%$#@!{}[]:;\"'?/,.<>`~|-_+="
+        },
+        {
+          "name": "Spaces",
+          "characters": " "
+        }
+      ],
+      "version": "1.0",
+      "properties": {
+        "expires": 0,
+        "minLength": 7
+      },
+      "url": "https://github.com",
+      "timestamp": 1534508918998
+    }
+  ]
+}

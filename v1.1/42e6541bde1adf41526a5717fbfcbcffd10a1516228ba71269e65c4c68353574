@@ -1,0 +1,32 @@
+{
+  "ppds": [
+    {
+      "name": "Ziggo",
+      "characterSets": [
+        {
+          "name": "Letters",
+          "base": "Letters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        },
+        {
+          "name": "Specials",
+          "base": "Specials"
+        },
+        {
+          "name": "Spaces",
+          "base": "Spaces"
+        }
+      ],
+      "version": "1.1",
+      "properties": {
+        "expires": 0,
+        "minLength": 8
+      },
+      "url": "https://www.ziggo.nl",
+      "timestamp": 1534528568197
+    }
+  ]
+}

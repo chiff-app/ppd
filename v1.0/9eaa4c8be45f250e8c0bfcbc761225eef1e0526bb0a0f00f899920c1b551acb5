@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "LinkedIn",
+      "redirect": "https://www.linkedin.com",
+      "version": "1.0",
+      "url": "https://nl.linkedin.com",
+      "timestamp": 1568028415466
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Reddit",
+      "redirect": "https://www.reddit.com",
+      "version": "1.0",
+      "url": "https://reddit.com",
+      "timestamp": 1558343216205
+    }
+  ]
+}

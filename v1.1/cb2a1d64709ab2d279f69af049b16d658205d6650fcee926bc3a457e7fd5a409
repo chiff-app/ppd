@@ -1,0 +1,33 @@
+{
+  "ppds": [
+    {
+      "name": "ING",
+      "characterSets": [
+        {
+          "name": "Letters",
+          "base": "Letters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        },
+        {
+          "name": "Specials",
+          "characters": "!#$%-.@_"
+        },
+        {
+          "name": "Spaces",
+          "base": "Spaces"
+        }
+      ],
+      "version": "1.1",
+      "properties": {
+        "expires": 0,
+        "maxLength": 20,
+        "minLength": 8
+      },
+      "url": "https://www.ing.nl",
+      "timestamp": 1538128831998
+    }
+  ]
+}

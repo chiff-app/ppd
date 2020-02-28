@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Udemy",
+      "redirect": "https://www.udemy.com",
+      "version": "1.0",
+      "url": "https://udemy.com",
+      "timestamp": 1558343291090
+    }
+  ]
+}

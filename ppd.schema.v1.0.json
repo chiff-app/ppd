@@ -1,0 +1,1062 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/keyn-app/ppd/master/ppd.schema.v1.0.json",
+  "type": "object",
+  "title": "Password Policy Description Schema",
+  "description": "This schema describes the Password Policy Description JSON standard.",
+  "version": "1.0",
+  "required": ["ppds"],
+  "properties": {
+    "ppds": {
+      "type": "array",
+      "title": "The collection of PPDs",
+      "description": "A PPD may contain multiple PPD-items.",
+      "items": {
+        "type": "object",
+        "title": "Password Policy Description",
+        "description": "The Password Policy Description (PPD) represents a single password policy description for the given url.",
+        "oneOf": [
+          {
+            "anyOf": [
+              {
+                "required": ["name", "version", "url", "service", "properties"],
+                "not": {
+                  "required": ["redirect", "characterSets"]
+                }
+              },
+              {
+                "required": [
+                  "name",
+                  "version",
+                  "url",
+                  "characterSets",
+                  "properties"
+                ],
+                "not": {
+                  "required": ["redirect", "service"]
+                }
+              }
+            ]
+          },
+          {
+            "required": ["name", "version", "url", "redirect"],
+            "not": {
+              "required": ["service", "properties", "characterSets"]
+            }
+          }
+        ],
+        "properties": {
+          "characterSets": {
+            "type": "array",
+            "title": "CharacterSets",
+            "description": "A collection of characterSets.",
+            "items": {
+              "type": "object",
+              "title": "CharacterSet",
+              "description": "Represents the properties of the password.",
+              "required": ["name"],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "title": "CharacterSet name",
+                  "description": "The name of the character set.",
+                  "default": "",
+                  "examples": [
+                    "UpperLetters",
+                    "LowerLetters",
+                    "Specials",
+                    "Numbers"
+                  ]
+                },
+                "characters": {
+                  "type": "string",
+                  "title": "CharacterSet characters",
+                  "description": "String containing all characters that will be added to the character set.",
+                  "examples": ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
+                },
+                "base": {
+                  "type": "string",
+                  "title": "CharacterSet Base",
+                  "description": "Reference to an already defined character set. All characters from the character set referenced by this element will be added to the character set this element is a child of."
+                }
+              }
+            }
+          },
+          "service": {
+            "type": "object",
+            "title": "Service",
+            "description": "Mutually exclusive with redirect item. Contains instructions to automate website logging in, password change, registration and password reset.",
+            "properties": {
+              "passwordReset": {
+                "type": "object",
+                "title": "PasswordReset",
+                "description": "This contains routines for resetting the password.",
+                "properties": {
+                  "maxTries": {
+                    "$ref": "#/definitions/maxTries"
+                  },
+                  "url": {
+                    "type": "string",
+                    "title": "URL",
+                    "description": "The password reset link.",
+                    "examples": ["https://www.example.com/forgot-password"],
+                    "format": "uri-template"
+                  },
+                  "routines": {
+                    "type": "null",
+                    "title": "PasswordReset Routines",
+                    "description": "NOT IMPLEMENTED YET"
+                  }
+                }
+              },
+              "passwordChange": {
+                "type": "object",
+                "title": "Password Change service",
+                "description": "A set of routines for changing a password on a website.",
+                "required": ["url"],
+                "properties": {
+                  "maxTries": {
+                    "$ref": "#/definitions/maxTries"
+                  },
+                  "url": {
+                    "type": "string",
+                    "title": "URL",
+                    "description": "The human-friendly URL for changing the password.",
+                    "examples": ["https://example.com/change"],
+                    "format": "uri-template"
+                  },
+                  "routines": {
+                    "type": "array",
+                    "title": "Routines",
+                    "description": "The set of routines.",
+                    "items": {
+                      "type": "object",
+                      "title": "Routine",
+                      "description": "A routine is a set of instructions that automate the change password process.",
+                      "oneOf": [
+                        {
+                          "$ref": "#/definitions/HTTPPasswordChangeRoutine"
+                        },
+                        {
+                          "$ref": "#/definitions/javascriptPasswordChangeRoutine"
+                        },
+                        {
+                          "$ref": "#/definitions/htmlPasswordChangeRoutine"
+                        },
+                        {
+                          "$ref": "#/definitions/extendedJSPasswordChangeRoutine"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "login": {
+                "type": "object",
+                "title": "Login service",
+                "description": "A set of routines for logging into a website.",
+                "required": ["url"],
+                "properties": {
+                  "maxTries": {
+                    "$ref": "#/definitions/maxTries"
+                  },
+                  "url": {
+                    "type": "string",
+                    "title": "URL",
+                    "description": "The human-friendly URL for logging in.",
+                    "examples": ["https://example.com/login"],
+                    "format": "uri-template"
+                  },
+                  "routines": {
+                    "type": "array",
+                    "title": "Routines",
+                    "description": "The set of routines.",
+                    "items": {
+                      "type": "object",
+                      "title": "Routine",
+                      "description": "A routine is a set of instructions that automate the login process.",
+                      "oneOf": [
+                        {
+                          "$ref": "#/definitions/HTTPLoginRoutine"
+                        },
+                        {
+                          "$ref": "#/definitions/javascriptLoginRoutine"
+                        },
+                        {
+                          "$ref": "#/definitions/htmlLoginRoutine"
+                        },
+                        {
+                          "$ref": "#/definitions/extendedJSLoginRoutine"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "register": {
+                "type": "object",
+                "title": "Register service",
+                "required": ["url"],
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "title": "URL",
+                    "description": "The human-friendly URL for changing the password.",
+                    "examples": ["https://signup.example.com"],
+                    "format": "uri-template"
+                  }
+                }
+              }
+            }
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Human-friendly name of the website the PPD is for."
+          },
+          "version": {
+            "const": "1.0",
+            "type": "string",
+            "title": "Version",
+            "description": "The current version of the PPD."
+          },
+          "properties": {
+            "type": "object",
+            "title": "PPD Properties",
+            "properties": {
+              "maxConsecutive": {
+                "type": "integer",
+                "title": "MaxConsecutive",
+                "description": "Indicates whether consecutive characters are allowed or not. A omitted value or 0 indicates no limitation on consecutive characters.",
+                "minimum": 0
+              },
+              "expires": {
+                "type": "integer",
+                "title": "PasswordExpiry",
+                "description": "Password expiry in days. A value of 0 means no expiry.",
+                "default": 0,
+                "minimum": 0
+              },
+              "maxLength": {
+                "type": "integer",
+                "title": "MaximumLength",
+                "description": "Maximum length of the password. A value of 0 means no maximum length.",
+                "default": 32,
+                "minimum": 0
+              },
+              "minLength": {
+                "type": "integer",
+                "title": "MinimumLength",
+                "description": "Minimum length of the password.",
+                "minimum": 1,
+                "default": 8
+              },
+              "characterSettings": {
+                "type": "object",
+                "title": "CharacterSettings",
+                "description": "Parent node for character settings. If the node is omitted, all characters defined in the characterSets element are treated as available for use with no restrictions on minimum and maximum ocurrences.",
+                "properties": {
+                  "characterSetSettings": {
+                    "type": "array",
+                    "title": "CharacterSetSettings",
+                    "description": "Settings element for a globally available character set",
+                    "items": {
+                      "type": "object",
+                      "required": ["name"],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "title": "The name of the characterSet where this setting applies to.",
+                          "examples": ["UpperLetters"]
+                        },
+                        "minOccurs": {
+                          "type": "integer",
+                          "title": "MinOccurs",
+                          "description": "Minimum occurences of the character set for the given positions. A value of 0 means no restrictions of minimum occurences.",
+                          "default": 0
+                        },
+                        "maxOccurs": {
+                          "type": "integer",
+                          "title": "MaxOccurs",
+                          "description": "Maximum occurences of the character set for the given positions. Ommitted for no restrictions on maximum occurences.",
+                          "minimum": 1
+                        }
+                      }
+                    }
+                  },
+                  "requirementGroups": {
+                    "type": "array",
+                    "title": "Requirement Groups",
+                    "description": "Character sets specified in the requirement groups are implicitly added to the available character sets for the given position (or all position if no positions are specified) if they were not allowed previously.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "minRules": {
+                          "type": "integer",
+                          "title": "Minimum Rules",
+                          "description": "Minimum number of rules that must be fulfilled.",
+                          "minimum": 0
+                        },
+                        "requirementRules": {
+                          "type": "array",
+                          "title": "Requirement Rules",
+                          "description": "The set of rules in this requirement group.",
+                          "items": {
+                            "type": "object",
+                            "required": ["characterSet"],
+                            "properties": {
+                              "characterSet": {
+                                "type": "string",
+                                "title": "Character Set Name",
+                                "description": "The name of the character set this rule applies to."
+                              },
+                              "positions": {
+                                "type": "string",
+                                "title": "Comma separated list of character positions the restriction is applied to. Each position can be a character position starting with 0. Negative character positions can be used to specify the position beginning from the end of the password. A value in the interval (0,1) can be used to specify a position by ratio. E.g. 0.5 refers to the center position of the password.",
+                                "default": ""
+                              },
+                              "minOccurs": {
+                                "type": "integer",
+                                "title": "MinOccurs",
+                                "description": "Minimum occurences of the character set for the given positions. A value of 0 means no restrictions of minimum occurences.",
+                                "minimum": 0,
+                                "default": 0
+                              },
+                              "maxOccurs": {
+                                "type": "integer",
+                                "title": "MaxOccurs",
+                                "description": "Maximum occurences of the character set for the given positions. Ommitted for no restrictions on maximum occurences.",
+                                "minimum": 1
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "positionRestrictions": {
+                    "type": "array",
+                    "title": "Position Restrictions",
+                    "description": "Restriction element used to restrict the allowed characters for a given character position.",
+                    "items": {
+                      "type": "object",
+                      "required": ["characterSet"],
+                      "properties": {
+                        "characterSet": {
+                          "type": "string",
+                          "title": "Character Set Name",
+                          "description": "The name of the character set this rule applies to."
+                        },
+                        "positions": {
+                          "type": "string",
+                          "title": "Comma separated list of character positions the restriction is applied to. Each position can be a character position starting with 0. Negative character positions can be used to specify the position beginning from the end of the password. A value in the interval (0,1) can be used to specify a position by ratio. E.g. 0.5 refers to the center position of the password.",
+                          "default": ""
+                        },
+                        "minOccurs": {
+                          "type": "integer",
+                          "title": "MinOccurs",
+                          "description": "Minimum occurences of the character set for the given positions. A value of 0 means no restrictions of minimum occurences.",
+                          "minimum": 0,
+                          "default": 0
+                        },
+                        "maxOccurs": {
+                          "type": "integer",
+                          "title": "MaxOccurs",
+                          "description": "Maximum occurences of the character set for the given positions. Ommitted for no restrictions on maximum occurences.",
+                          "minimum": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "url": {
+              "type": "string",
+              "title": "URL",
+              "description": "Relative path of the webpage where this PPD will be used.",
+              "format": "uri-template"
+            },
+            "timestamp": {
+              "type": "integer",
+              "title": "Timestamp",
+              "description": "Timestamp when this PPD was created/updated. It should be in Unix Epoch time.",
+              "default": 0,
+              "examples": [1534347937113]
+            },
+            "redirect": {
+              "type": "string",
+              "title": "Redirect",
+              "description": "Mutually exclusive with service item. If the PPD is a redirect PPD, this value points to the main URL. Otherwise, it should be omitted.",
+              "examples": ["https://example.com"],
+              "format": "uri-template"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "maxTries": {
+      "type": "number",
+      "title": "MaxTries",
+      "description": "The amount of incorrect attempts before an accounts get locked. 0 means unlimited.",
+      "default": 0,
+      "minimum": 0
+    },
+    "HTTPLoginRoutine": {
+      "title": "HTTPLoginRoutine",
+      "description": "A login routine that can be executed by sending a HTTP-request.",
+      "type": "object",
+      "required": ["type", "instructions"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "Routine login type",
+          "description": "The of the routine. Different routine types may contain different type of instructions and instructions may be interpreted differently.",
+          "const": "HTTPLoginRoutine"
+        },
+        "instructions": {
+          "type": "array",
+          "title": "Instructions",
+          "description": "The set of instructions.",
+          "items": {
+            "type": "object",
+            "title": "Instruction",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/getInstruction"
+              },
+              {
+                "$ref": "#/definitions/formInstruction"
+              },
+              {
+                "$ref": "#/definitions/skipInstruction"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "htmlLoginRoutine": {
+      "title": "HTMLLoginRoutine",
+      "description": "A login routine that does not rely on javascript.",
+      "type": "object",
+      "required": ["type", "instructions"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "Routine login type",
+          "description": "The of the routine. Different routine types may contain different type of instructions and instructions may be interpreted differently.",
+          "const": "htmlLoginRoutine"
+        },
+        "instructions": {
+          "type": "array",
+          "title": "Instructions",
+          "description": "The set of instructions.",
+          "items": {
+            "type": "object",
+            "title": "Instruction",
+            "description": "An operation on the webpage that is part of the routine process. For example, load a page or fill and submit a form.",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/getInstruction"
+              },
+              {
+                "$ref": "#/definitions/formInstruction"
+              },
+              {
+                "$ref": "#/definitions/skipInstruction"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "javascriptLoginRoutine": {
+      "title": "JavascriptLoginRoutine",
+      "description": "A login routine that relies on javascript being enabled.",
+      "type": "object",
+      "required": ["type", "instructions"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "Routine login type",
+          "description": "The of the routine. Different routine types may contain different type of instructions and instructions may be interpreted differently.",
+          "const": "javascriptLoginRoutine"
+        },
+        "instructions": {
+          "type": "array",
+          "title": "Instructions",
+          "description": "The set of instructions.",
+          "items": {
+            "type": "object",
+            "title": "Instruction",
+            "description": "An operation on the webpage that is part of the routine process. For example, load a page or fill and submit a form.",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/getInstruction"
+              },
+              {
+                "$ref": "#/definitions/formInstruction"
+              },
+              {
+                "$ref": "#/definitions/skipInstruction"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "extendedJSLoginRoutine": {
+      "title": "ExtendedJSLoginRoutine",
+      "description": "A login routine that relies on javascript-instructions.",
+      "type": "object",
+      "required": ["type", "instructions"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "Routine login type",
+          "description": "The of the routine. Different routine types may contain different type of instructions and instructions may be interpreted differently.",
+          "const": "extendedJSLoginRoutine"
+        },
+        "instructions": {
+          "type": "array",
+          "title": "Instructions",
+          "description": "The set of instructions.",
+          "items": {
+            "type": "object",
+            "title": "Instruction",
+            "description": "An operation on the webpage that is part of the routine process. For example, load a page or execute some JavaScript.",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/getInstruction"
+              },
+              {
+                "$ref": "#/definitions/formInstruction"
+              },
+              {
+                "$ref": "#/definitions/javascriptInstruction"
+              },
+              {
+                "$ref": "#/definitions/skipInstruction"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "HTTPPasswordChangeRoutine": {
+      "title": "HTTPPasswordChangeRoutine",
+      "description": "A password change routine that can be executed by sending a HTTP request.",
+      "type": "object",
+      "required": ["type", "instructions"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "Routine login type",
+          "description": "The of the routine. Different routine types may contain different type of instructions and instructions may be interpreted differently.",
+          "const": "HTTPPasswordChangeRoutine"
+        },
+        "instructions": {
+          "type": "array",
+          "title": "Instructions",
+          "description": "The set of instructions.",
+          "items": {
+            "type": "object",
+            "title": "Instruction",
+            "description": "An operation on the webpage that is part of the routine process. For example, load a page or fill and submit a form.",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/getInstruction"
+              },
+              {
+                "$ref": "#/definitions/formInstruction"
+              },
+              {
+                "$ref": "#/definitions/skipInstruction"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "htmlPasswordChangeRoutine": {
+      "title": "HTMLPasswordChangeRoutine",
+      "description": "A password change routine for page that does not need javascript.",
+      "type": "object",
+      "required": ["type", "instructions"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "Routine login type",
+          "description": "The of the routine. Different routine types may contain different type of instructions and instructions may be interpreted differently.",
+          "const": "htmlPasswordChangeRoutine"
+        },
+        "instructions": {
+          "type": "array",
+          "title": "Instructions",
+          "description": "The set of instructions.",
+          "items": {
+            "type": "object",
+            "title": "Instruction",
+            "description": "An operation on the webpage that is part of the routine process. For example, load a page or fill and submit a form.",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/getInstruction"
+              },
+              {
+                "$ref": "#/definitions/formInstruction"
+              },
+              {
+                "$ref": "#/definitions/skipInstruction"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "javascriptPasswordChangeRoutine": {
+      "title": "JavascriptPasswordChangeRoutine",
+      "description": "A password change routine for page that needs javascript.",
+      "required": ["type", "instructions"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "Routine login type",
+          "description": "The of the routine. Different routine types may contain different type of instructions and instructions may be interpreted differently.",
+          "const": "javascriptPasswordChangeRoutine"
+        },
+        "instructions": {
+          "type": "array",
+          "title": "Instructions",
+          "description": "The set of instructions.",
+          "items": {
+            "type": "object",
+            "title": "Instruction",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/getInstruction"
+              },
+              {
+                "$ref": "#/definitions/formInstruction"
+              },
+              {
+                "$ref": "#/definitions/javascriptInstruction"
+              },
+              {
+                "$ref": "#/definitions/skipInstruction"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "extendedJSPasswordChangeRoutine": {
+      "title": "ExtendedJSPasswordChangeRoutine",
+      "description": "A password change routine that relies on javascript-instructions.",
+      "type": "object",
+      "required": ["type", "instructions"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "Routine password change type",
+          "description": "The of the routine. Different routine types may contain different type of instructions and instructions may be interpreted differently.",
+          "const": "extendedJSPasswordChangeRoutine"
+        },
+        "instructions": {
+          "type": "array",
+          "title": "Instructions",
+          "description": "The set of instructions.",
+          "items": {
+            "type": "object",
+            "title": "Instruction",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/getInstruction"
+              },
+              {
+                "$ref": "#/definitions/formInstruction"
+              },
+              {
+                "$ref": "#/definitions/javascriptInstruction"
+              },
+              {
+                "$ref": "#/definitions/skipInstruction"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "baseInstruction": {
+      "type": "object",
+      "title": "BaseInstruction",
+      "description": "Base instruction superclass.",
+      "properties": {
+        "assert": {
+          "type": "array",
+          "title": "A set of asserts, where at least 1 should be true. Evaluated as logical OR.",
+          "items": {
+            "type": "object",
+            "title": "Assert",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/urlAssert"
+              },
+              {
+                "$ref": "#/definitions/selectAssert"
+              },
+              {
+                "$ref": "#/definitions/cookieAssert"
+              },
+              {
+                "$ref": "#/definitions/noCookieAssert"
+              },
+              {
+                "$ref": "#/definitions/findAssert"
+              },
+              {
+                "$ref": "#/definitions/childMutationAssert"
+              },
+              {
+                "$ref": "#/definitions/attributeMutationAssert"
+              }
+            ]
+          }
+        },
+        "frameUrl": {
+          "type": "string",
+          "description": "If the instruction should be executed within an iframe on the page, this value should contain the URL of that iframe.",
+          "format": "uri-template"
+        }
+      }
+    },
+    "getInstruction": {
+      "required": ["type", "url"],
+      "title": "GetInstruction",
+      "description": "A Get-instruction navigates to a certain URL. It is completed when the page is fully loaded.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/baseInstruction"
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "get"
+            },
+            "url": {
+              "type": "string",
+              "title": "URL",
+              "description": "The url where should be navigated to.",
+              "format": "uri-template"
+            }
+          }
+        }
+      ]
+    },
+    "formInstruction": {
+      "required": ["type", "element"],
+      "title": "FormInstruction",
+      "description": "A Form-instructions fills in and submits the form. How the form is submitted depends on the type of routine.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/baseInstruction"
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "form"
+            },
+            "selector": {
+              "description": "A CSS selector of the form that should be filled. If this instruction is part of a htmlRoutine, this form will be submitted.",
+              "type": "object",
+              "required": ["value"],
+              "properties": {
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "element": {
+              "type": "array",
+              "items": {
+                "required": ["value"],
+                "properties": {
+                  "value": {
+                    "description": "This value should be replaced by the actual value by the application",
+                    "type": "string",
+                    "enum": [
+                      "{{username}}",
+                      "{{password}}",
+                      "{{newPassword}}",
+                      "{{2fa}}",
+                      "{{pin}}"
+                    ]
+                  },
+                  "selector": {
+                    "description": "A CSS selector of the input field that should be filled.",
+                    "type": "object",
+                    "required": ["value"],
+                    "properties": {
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "click": {
+              "type": "string",
+              "title": "Click",
+              "description": "The selector of the element click() should be called upon. This should be preferred over script. Will only be executed if this instruction is part of an extendedJSRoutine."
+            },
+            "script": {
+              "type": "string",
+              "title": "Script",
+              "description": "JavaScript code that should be executed to submit the form. Will only be executed if this instruction is part of an extendedJSRoutine."
+            }
+          }
+        }
+      ]
+    },
+    "javascriptInstruction": {
+      "title": "JavascriptInstruction",
+      "description": "A Javascript-instructions executes a string of JavaScript.",
+      "type": "object",
+      "required": ["type", "script"],
+      "allOf": [
+        {
+          "$ref": "#/definitions/baseInstruction"
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "javascript"
+            },
+            "script": {
+              "type": "string",
+              "title": "Script",
+              "description": "JavaScript code that should be executed"
+            }
+          }
+        }
+      ]
+    },
+    "skipInstruction": {
+      "title": "JavascriptInstruction",
+      "description": "A Javascript-instructions executes a string of JavaScript.",
+      "type": "object",
+      "required": ["type"],
+      "allOf": [
+        {
+          "$ref": "#/definitions/baseInstruction"
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "skip"
+            }
+          }
+        }
+      ]
+    },
+    "urlAssert": {
+      "title": "URLAssert",
+      "description": "Assert is true when currently on the URL specified in 'prefix'",
+      "type": "object",
+      "required": ["prefix", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "url"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "expression": {
+          "type": "string"
+        }
+      }
+    },
+    "selectAssert": {
+      "title": "SelectAssert",
+      "description": "Assert is true when an element with the specified CSS-selector is found.",
+      "type": "object",
+      "required": ["type", "selector"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "select"
+        },
+        "selector": {
+          "type": "string"
+        },
+        "minOccurs": {
+          "description": "The minimum number of times the selector should be found on the page.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "maxOccurs": {
+          "description": "The maximum number of times the selector should be found on the page. 0 means it should be absent.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "frameUrl": {
+          "type": "string",
+          "description": "The assert inherits the frameUrl of its instruction, but if the assert should be executed in a different iframe on the page, this value should contain the URL of that iframe.",
+          "format": "uri-template"
+        }
+      }
+    },
+    "cookieAssert": {
+      "type": "object",
+      "title": "CookieAssert",
+      "description": "Assert is true when cookie is found.",
+      "required": ["type", "name"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "cookie"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "noCookieAssert": {
+      "title": "NoCookieAssert",
+      "description": "Assert is true when cookie is not found.",
+      "type": "object",
+      "required": ["type", "name"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "noCookie"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "findAssert": {
+      "title": "FindAssert",
+      "description": "Check whether a certain pattern (regex) can be found on the page.",
+      "type": "object",
+      "required": ["type", "expression", "selector"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "find"
+        },
+        "minOccurs": {
+          "description": "The minimum number of times the selector should be found on the page.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "maxOccurs": {
+          "description": "The maximum number of times the selector should be found on the page. 0 means it should be absent.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "selector": {
+          "type": "string",
+          "description": "The CSS-selector of the element of which the innerHTML should be checked for the pattern. So 'body' implies entire page."
+        },
+        "expression": {
+          "description": "The pattern that should be found on the page.",
+          "type": "string"
+        },
+        "frameUrl": {
+          "type": "string",
+          "description": "The assert inherits the frameUrl of its instruction, but if the assert should be executed in a different iframe on the page, this value should contain the URL of that iframe.",
+          "format": "uri-template"
+        }
+      }
+    },
+    "childMutationAssert": {
+      "title": "ChildMutationAssert",
+      "description": "A childMutationObserver observes when childNodes are added or removed on the subtree of a node. See MutationObserver documentation.",
+      "type": "object",
+      "required": ["selector", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "childMutation"
+        },
+        "selector": {
+          "type": "string",
+          "title": "selector"
+        },
+        "removedNodes": {
+          "type": "array",
+          "title": "RemovedNodes",
+          "items": {
+            "type": "string",
+            "title": "Selector",
+            "description": "The CSS selector the node that should be found in the removedNodes array of the mutation"
+          }
+        },
+        "addedNodes": {
+          "type": "array",
+          "title": "AddedNodes",
+          "items": {
+            "type": "string",
+            "title": "Selector",
+            "description": "The CSS selector the node that should be found in the addedNodes array of the mutation"
+          }
+        },
+        "frameUrl": {
+          "type": "string",
+          "description": "The assert inherits the frameUrl of its instruction, but if the assert should be executed in a different iframe on the page, this value should contain the URL of that iframe.",
+          "format": "uri-template"
+        }
+      }
+    },
+    "attributeMutationAssert": {
+      "title": "AttributeMutationAssert",
+      "description": "An attributeMutationObserver observes attribute mutations on a node, for example class changes. See MutationObserver documentation",
+      "type": "object",
+      "required": ["selector", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "attributeMutation"
+        },
+        "selector": {
+          "type": "string",
+          "title": "selector",
+          "description": "The CSS-selector of the element the MutationObserver should be place upon."
+        },
+        "attributeName": {
+          "type": "string",
+          "title": "AttributeName",
+          "description": "The name of the attribute that should be observed by the MutationObserver",
+          "examples": ["class"]
+        },
+        "removedAttributes": {
+          "type": "string",
+          "title": "RemovedAttributes",
+          "description": "A string that should not be found in the current attribute value, but in the oldAttributes value of the mutation."
+        },
+        "addedAttributes": {
+          "type": "string",
+          "title": "AddedAttributes",
+          "description": "A string that should be found in the current attribute value and not in the oldAttributes value of the mutation."
+        },
+        "frameUrl": {
+          "type": "string",
+          "description": "The assert inherits the frameUrl of its instruction, but if the assert should be executed in a different iframe on the page, this value should contain the URL of that iframe.",
+          "format": "uri-template"
+        }
+      }
+    }
+  }
+}

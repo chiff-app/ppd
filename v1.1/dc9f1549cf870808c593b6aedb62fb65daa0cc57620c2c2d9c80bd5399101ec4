@@ -1,0 +1,39 @@
+{
+  "ppds": [
+    {
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "base": "LowerLetters"
+        },
+        {
+          "name": "UpperLetters",
+          "base": "UpperLetters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        },
+        {
+          "name": "Specials",
+          "characters": "!\"#$%&'()*+,-./:;<=>?@[]^`{|}~"
+        },
+        {
+          "name": "Spaces",
+          "base": "Spaces"
+        }
+      ],
+      "name": "Microsoft Live",
+      "passwordReset": {
+        "url": "https://login.live.com/password"
+      },
+      "version": "1.1",
+      "properties": {
+        "maxLength": 32,
+        "minLength": 8
+      },
+      "url": "https://login.live.com",
+      "timestamp": 1532360742788
+    }
+  ]
+}

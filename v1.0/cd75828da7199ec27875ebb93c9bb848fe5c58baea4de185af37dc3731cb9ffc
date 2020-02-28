@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Netflix",
+      "redirect": "https://www.netflix.com",
+      "version": "1.0",
+      "url": "https://netflix.com",
+      "timestamp": 1558343242113
+    }
+  ]
+}

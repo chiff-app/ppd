@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Imageshack",
+      "redirect": "https://imageshack.com",
+      "version": "1.0",
+      "url": "https://www.imageshack.us",
+      "timestamp": 1558338435633
+    }
+  ]
+}

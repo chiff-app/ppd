@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Knab",
+      "redirect": "https://www.knab.nl",
+      "version": "1.1",
+      "url": "https://persoonlijk.knab.nl",
+      "timestamp": 1565272445912
+    }
+  ]
+}
