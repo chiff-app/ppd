@@ -3,7 +3,6 @@
     {
       "name": "Ziggo Mail",
       "version": "1.1",
-
       "url": "https://mail.ziggo.nl",
       "service": {
         "login": {
