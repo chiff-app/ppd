@@ -1,0 +1,86 @@
+{
+  "ppds": [
+    {
+      "url": "https://www.zoho.com",
+      "name": "Zoho",
+      "version": "1.0",
+      "service": {
+        "login": {
+          "routines": [
+            {
+              "instructions": [
+                {
+                  "type": "get",
+                  "url": "https://accounts.zoho.eu/signin?servicename=ZohoHome&signupurl=https://www.zoho.com/signup.html",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "selector": "form#login",
+                      "minOccurs": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "form",
+                  "selector": {
+                    "value": "form#login"
+                  },
+                  "element": [
+                    {
+                      "value": "{{username}}",
+                      "selector": { "value": "#login_id" }
+                    },
+                    {
+                      "value": "{{password}}",
+                      "selector": { "value": "#password" }
+                    }
+                  ],
+                  "click": "#nextbtn"
+                },
+                {
+                  "type": "javascript",
+                  "script": "document.querySelector('#nextbtn').click()",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "selector": "#ztb-accountInfo",
+                      "minOccurs": 1
+                    }
+                  ]
+                }
+              ],
+              "type": "extendedJSLoginRoutine"
+            }
+          ],
+          "url": "https://accounts.zoho.eu/signin"
+        }
+      },
+      "characterSets": [
+        {
+          "name": "UpperLetters",
+          "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          "name": "LowerLetters",
+          "characters": "abcdefghijklmnopqrstuvwxyz"
+        }
+      ],
+      "properties": {
+        "expires": 0,
+        "minLength": 8,
+        "characterSettings": {
+          "characterSetSettings": [
+            {
+              "name": "UpperLetters",
+              "minOccurs": 1
+            },
+            {
+              "name": "LowerLetters",
+              "minOccurs": 1
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
