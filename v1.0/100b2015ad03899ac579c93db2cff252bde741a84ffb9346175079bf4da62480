@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Zoho",
+      "redirect": "https://www.zoho.com",
+      "version": "1.0",
+      "url": "https://accounts.zoho.eu",
+      "timestamp": 1583832613542
+    }
+  ]
+}
