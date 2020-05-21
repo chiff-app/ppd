@@ -1,0 +1,51 @@
+{
+  "ppds": [
+    {
+      "name": "Hostnet",
+      "url": "https://mijn.hostnet.nl",
+      "version": "1.1",
+      "properties": {
+        "expires": 0,
+        "minLength": 10,
+        "characterSettings": {
+          "characterSetSettings": [
+            {
+              "name": "UpperLetters",
+              "minOccurs": 1
+            },
+            {
+              "name": "Specials",
+              "minOccurs": 1
+            },
+            {
+              "name": "Numbers",
+              "minOccurs": 1
+            },
+            {
+              "name": "LowerLetters",
+              "minOccurs": 1
+            }
+          ]
+        }
+      },
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "base": "LowerLetters"
+        },
+        {
+          "name": "UpperLetters",
+          "base": "UpperLetters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        },
+        {
+          "name": "Specials",
+          "base": "Specials"
+        }
+      ]
+    }
+  ]
+}
