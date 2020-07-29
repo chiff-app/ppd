@@ -1,0 +1,73 @@
+{
+  "ppds": [
+    {
+      "name": "Booking.com",
+      "timestamp": 1596035807627,
+      "url": "https://booking.com",
+      "version": "1.1",
+      "properties": {
+        "expires": 0,
+        "minLength": 8
+      },
+      "service": {
+        "login": {
+          "url": "https://account.booking.com/",
+          "routines": [
+            {
+              "type": "extendedJSLoginRoutine",
+              "instructions": [
+                {
+                  "type": "get",
+                  "url": "https://account.booking.com/",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "selector": "#username",
+                      "minOccurs": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "form",
+                  "selector": "form.nw-signin",
+                  "element": [
+                    {
+                      "value": "{{username}}",
+                      "selector": "#username"
+                    }
+                  ],
+                  "click": "button[type='submit']",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "selector": "#password",
+                      "minOccurs": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "form",
+                  "selector": "form.nw-signin",
+                  "element": [
+                    {
+                      "value": "{{password}}",
+                      "selector": "#password"
+                    }
+                  ],
+                  "click": "button[type='submit']",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "selector": "#profile_form",
+                      "minOccurs": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
