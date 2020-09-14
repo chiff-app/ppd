@@ -1,0 +1,55 @@
+{
+  "ppds": [
+    {
+      "name": "Parkeren Leiden",
+      "url": "https://parkeren.leiden.nl/DVSPortal/",
+      "version": "1.1",
+      "properties": {
+        "expires": 0
+      },
+      "service": {
+        "login": {
+          "url": "https://parkeren.leiden.nl/DVSPortal/",
+          "routines": [
+            {
+              "type": "extendedJSLoginRoutine",
+              "instructions": [
+                {
+                  "type": "get",
+                  "url": "https://parkeren.leiden.nl/DVSPortal/",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "selector": "input#txtIdentifier",
+                      "minOccurs": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "form",
+                  "element": [
+                    {
+                      "value": "{{username}}",
+                      "selector": "input#txtIdentifier"
+                    },
+                    {
+                      "value": "{{password}}",
+                      "selector": "input#txtPincode"
+                    }
+                  ],
+                  "click": "button#btnLogin",
+                  "assert": [
+                    {
+                      "type": "url",
+                      "prefix": "https://parkeren.leiden.nl/DVSPortal/permitmedia/"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
