@@ -3,6 +3,7 @@
     {
       "name": "KLM",
       "url": "https://klm.com",
+      "timestamp": 1600076632304,
       "version": "1.1",
       "properties": {
         "expires": 0,
