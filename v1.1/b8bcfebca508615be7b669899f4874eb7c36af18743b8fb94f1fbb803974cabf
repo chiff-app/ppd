@@ -1,0 +1,88 @@
+{
+  "ppds": [
+    {
+      "name": "KLM",
+      "url": "https://klm.com",
+      "version": "1.1",
+      "properties": {
+        "expires": 0,
+        "minLength": 8,
+        "characterSettings": {
+          "characterSetSettings": [
+            {
+              "name": "LowerLetters",
+              "minOccurs": 1
+            },
+            {
+              "name": "UpperLetters",
+              "minOccurs": 1
+            },
+            {
+              "name": "Numbers",
+              "minOccurs": 1
+            }
+          ]
+        },
+        "maxLength": 12
+      },
+      "characterSets": [
+        {
+          "name": "LowerLetters",
+          "base": "LowerLetters"
+        },
+        {
+          "name": "UpperLetters",
+          "base": "UpperLetters"
+        },
+        {
+          "name": "Specials",
+          "characters": "@$&+-/#_?!"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        }
+      ],
+      "service": {
+        "login": {
+          "url": "https://login.klm.com/login/account",
+          "routines": [
+            {
+              "type": "extendedJSLoginRoutine",
+              "instructions": [
+                {
+                  "type": "get",
+                  "url": "https://login.klm.com/login/account"
+                },
+                {
+                  "type": "skip",
+                  "assert": [
+                    {
+                      "type": "childMutation",
+                      "selector": "body",
+                      "addedNodes": ["div#cookiebarModal"]
+                    }
+                  ]
+                },
+                {
+                  "type": "form",
+                  "element": [
+                    {
+                      "value": "{{username}}",
+                      "selector": "input[formcontrolname=loginId]"
+                    },
+                    {
+                      "value": "{{password}}",
+                      "selector": "input[formcontrolname=password]"
+                    }
+                  ],
+                  "click": "div.login-btn-container button"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
