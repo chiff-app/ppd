@@ -1,0 +1,11 @@
+{
+  "ppds": [
+    {
+      "name": "Yahoo",
+      "redirect": "https://www.yahoo.com",
+      "version": "1.1",
+      "url": "https://login.yahoo.com",
+      "timestamp": 1600092933385
+    }
+  ]
+}

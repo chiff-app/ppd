@@ -1,0 +1,76 @@
+{
+  "ppds": [
+    {
+      "name": "Yahoo",
+      "url": "https://www.yahoo.com",
+      "version": "1.1",
+      "timestamp": 1600092933385,
+      "properties": {
+        "expires": 0
+      },
+      "service": {
+        "login": {
+          "url": "https://login.yahoo.com/",
+          "routines": [
+            {
+              "type": "extendedJSLoginRoutine",
+              "instructions": [
+                {
+                  "type": "get",
+                  "url": "https://login.yahoo.com/",
+                  "assert": [
+                    {
+                      "type": "select",
+                      "selector": "input#login-username",
+                      "minOccurs": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "form",
+                  "selector": "form#login-username-form",
+                  "element": [
+                    {
+                      "value": "{{username}}",
+                      "selector": "input#login-username"
+                    }
+                  ],
+                  "assert": [
+                    {
+                      "type": "select",
+                      "selector": "#login-passwd",
+                      "minOccurs": 1
+                    }
+                  ],
+                  "click": "#login-signin"
+                },
+                {
+                  "type": "form",
+                  "selector": "div#password-challenge form",
+                  "element": [
+                    {
+                      "value": "{{password}}",
+                      "selector": "#login-passwd"
+                    }
+                  ],
+                  "assert": [
+                    {
+                      "type": "cookie",
+                      "name": "T"
+                    },
+                    {
+                      "type": "select",
+                      "selector": "#ybarAccountMenuBody",
+                      "minOccurs": 1
+                    }
+                  ],
+                  "click": "#login-signin"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
