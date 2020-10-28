@@ -13,7 +13,7 @@
         },
         {
           "name": "Specials",
-          "characters": "~!@#$%^&*()_+?><.,/)"
+          "characters": "!@#$%^&*()"
         }
       ],
       "version": "1.0",
