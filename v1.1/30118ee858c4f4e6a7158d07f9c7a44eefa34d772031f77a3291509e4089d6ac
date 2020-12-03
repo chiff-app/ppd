@@ -2,10 +2,32 @@
   "ppds": [
     {
       "name": "ING",
-      "redirect": "https://www.ing.nl",
+      "characterSets": [
+        {
+          "name": "Letters",
+          "base": "Letters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        },
+        {
+          "name": "Specials",
+          "characters": "!#$%-.@_"
+        },
+        {
+          "name": "Spaces",
+          "base": "Spaces"
+        }
+      ],
       "version": "1.1",
+      "properties": {
+        "expires": 0,
+        "maxLength": 20,
+        "minLength": 8
+      },
       "url": "https://mijn.ing.nl",
-      "timestamp": 1558343597371
+      "timestamp": 1538128831998
     }
   ]
 }
