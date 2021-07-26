@@ -1,0 +1,43 @@
+{
+  "ppds": [
+    {
+      "name": "Consular Services",
+      "url": "https://protocol.mfaservices.nl",
+      "version": "1.1",
+      "properties": {
+        "expires": 0,
+        "characterSettings": {
+          "characterSetSettings": [
+            {
+              "name": "Specials",
+              "minOccurs": 1
+            },
+            {
+              "name": "Numbers",
+              "minOccurs": 1
+            },
+            {
+              "name": "Letters",
+              "minOccurs": 1
+            }
+          ]
+        }
+      },
+      "service": {},
+      "characterSets": [
+        {
+          "name": "Letters",
+          "base": "Letters"
+        },
+        {
+          "name": "Numbers",
+          "base": "Numbers"
+        },
+        {
+          "name": "Specials",
+          "base": "Specials"
+        }
+      ]
+    }
+  ]
+}
